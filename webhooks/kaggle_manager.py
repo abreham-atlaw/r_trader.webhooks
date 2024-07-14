@@ -19,10 +19,9 @@ def __pull_notebook(api, kernel: str) -> str:
 	api.kernels_pull(kernel, pull_path, metadata=True)
 	return pull_path
 
-def __update_meta(meta_data, path):
-	if len(meta_data) == 0:
-		return
 
+def __update_meta(meta_data, path):
+	meta_data["enable_internet"] = True
 	meta_path = os.path.join(path, "kernel-metadata.json")
 	with open(meta_path, "r") as file:
 		meta = json.load(file)
