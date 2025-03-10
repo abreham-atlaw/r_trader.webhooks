@@ -15,16 +15,18 @@ import requests
 @app.route("/notebooks/notebook-runner")
 def notebook_runner():
 	from kaggle.rest import ApiException
-	try:
-		run_notebook("bemnetatlaw/notebookrunner", {})
-		return "", 200
-	except ApiException as ex:
-		if ex.status in [429, 404]:
-			print(f"Rate limited[{ex.status}]. Waiting 2 seconds...")
-			time.sleep(2)
-			return notebook_runner()
-		else:
-			raise ex
+	run_notebook("bemnetatlaw/notebookrunner", {})
+	return "", 200
+	# try:
+	# 	run_notebook("bemnetatlaw/notebookrunner", {})
+	# 	return "", 200
+	# except ApiException as ex:
+	# 	if ex.status in [429, 404]:
+	# 		print(f"Rate limited[{ex.status}]. Waiting 2 seconds...")
+	# 		time.sleep(2)
+	# 		return notebook_runner()
+	# 	else:
+	# 		raise ex
 
 
 if __name__ == "__main__":
