@@ -6,6 +6,11 @@ from kaggle_manager import run_notebook
 
 app = Flask(__name__)
 
+import requests
+
+# response = requests.get("https://api64.ipify.org?format=json")
+# print("Public IP:", response.json()["ip"])
+
 
 @app.route("/notebooks/notebook-runner")
 def notebook_runner():
