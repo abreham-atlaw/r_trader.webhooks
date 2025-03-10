@@ -2,22 +2,16 @@ import os
 import time
 import json
 
-from kaggle import ApiClient
-from kaggle.configuration import Configuration
-
 import config
-
-os.environ["KAGGLE_USERNAME"] = config.KAGGLE_USERNAME
-os.environ["KAGGLE_KEY"] = config.KAGGLE_KEY
-from kaggle.api.kaggle_api_extended import KaggleApi
-
-
-import logging
-
-logging.basicConfig(level=logging.DEBUG)
 
 
 def __create_api():
+	os.environ["KAGGLE_USERNAME"] = config.KAGGLE_USERNAME
+	os.environ["KAGGLE_KEY"] = config.KAGGLE_KEY
+	from kaggle.api.kaggle_api_extended import KaggleApi
+	from kaggle import ApiClient
+	from kaggle.configuration import Configuration
+
 	kaggle_config = Configuration()
 	kaggle_config.proxy = config.KAGGLE_NETWORK_PROXY
 	api = KaggleApi(ApiClient(kaggle_config))
