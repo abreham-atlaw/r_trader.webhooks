@@ -1,8 +1,13 @@
 from flask import Flask
 
 import time
+import sys
+import os
+
+sys.path.append(os.path.abspath(__file__))
 
 from kaggle_manager import run_notebook
+
 
 app = Flask(__name__)
 
