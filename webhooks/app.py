@@ -15,8 +15,8 @@ def notebook_runner():
 		return "", 200
 	except ApiException as ex:
 		if ex.status in [429, 404]:
-			print(f"Rate limited[{ex.status}]. Waiting 30 seconds...")
-			time.sleep(30)
+			print(f"Rate limited[{ex.status}]. Waiting 2 seconds...")
+			time.sleep(2)
 			return notebook_runner()
 		else:
 			raise ex
