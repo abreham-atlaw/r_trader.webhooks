@@ -2,6 +2,9 @@ import os
 import time
 import json
 
+import multiprocessing
+
+multiprocessing.set_start_method("fork")
 os.environ["KAGGLE_USERNAME"] = "bemnetatlaw"
 os.environ["KAGGLE_KEY"] = "0c9625e07a328c93a9c27fb1dda49f1a"
 from kaggle.api.kaggle_api_extended import KaggleApi
@@ -9,8 +12,10 @@ from kaggle.api.kaggle_api_extended import KaggleApi
 api = KaggleApi()
 api.authenticate()
 
+
 def __clean(path):
 	os.system(f"rm -fr \"{path}\"")
+
 
 def __pull_notebook(api, kernel: str) -> str:
 	pull_path = f".notebook-{kernel}".replace("/", "-")
